@@ -1,0 +1,237 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    align-items: center;
+    padding: 20px;
+    background-color: #333; /* Тёмный фон контейнера */
+    min-width: 500px;
+}
+
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #555;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+.left-section{
+    display: flex;
+    align-items: center;
+}
+
+.header form{
+    width: 2em;
+    margin-right: 0.5em;
+}
+
+.exit-button{
+    width: 1.5em;
+    height: 1.5em;
+    padding: 1px;
+    text-align: center;
+    font-size: 1.1em;
+    background-color: #003366; /* Тёмно-синий цвет кнопки */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+h1, h2 {
+    font-size: 1.3em;
+    color: #f0f0f0;
+}
+@media (min-width: 920px) {
+    .form-container {
+        display: flex;
+        justify-content: space-around;
+        align-items: flex-start;
+        margin-bottom: 30px;
+    }
+    form {
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        flex-direction: column;
+        width: 65%;
+    }
+    #resultCheckBox {
+        padding: 0;
+        margin: 5px 0 0 20px;
+    }
+}
+@media (max-width: 920px) {
+    .form-container {
+        flex-direction: column;
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+    form {
+        order: 2;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+    .input-group{
+        flex-direction: column;
+    }
+    .graph-canvas{
+        display: flex;
+        justify-content: center;
+        order: 1;
+        width: 100%;
+    }
+    #resultCheckBox{
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+}
+
+
+
+.input-group {
+    display: flex;
+    justify-content: start;
+    align-content: center;
+    margin-bottom: 15px;
+}
+
+label {
+    font-size: 1.1em;
+    color: #e0e0e0;
+    margin: 5px;
+}
+
+input[type="text"] {
+    padding: 10px;
+    font-size: 1em;
+    border: 1px solid #555;
+    border-radius: 8px;
+    background-color: #444;
+    color: #f0f0f0;
+    transition: background-color 0.3s ease;
+}
+
+input[type="text"]:focus {
+    background-color: #555;
+    border-color: #003366; /* Темно-синий цвет */
+    outline: none;
+}
+
+input[type="checkbox"]{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 20px;
+}
+
+#resultCheckBox{
+    align-content: center;
+    height: 100%;
+}
+
+.checkbox-group{
+}
+
+
+
+
+.radio-group label{
+    margin-right: 12px;
+    color: #e0e0e0;
+}
+
+button, .button{
+    padding: 10px;
+    font-size: 1.1em;
+    background-color: #003366; /* Тёмно-синий цвет кнопки */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover, .button:hover {
+    background-color: #001f4d;
+}
+
+
+.large-rectangle {
+    padding: 20px;
+    width: 100%;
+    border: 2px dashed #003366; /* Темно-синий цвет рамки */
+    border-radius: 12px;
+    background-color: #333;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    color: #f0f0f0;
+    height: auto;
+}
+
+thead {
+    background-color: #003366;
+    color: white;
+}
+
+th, td {
+    padding: 12px;
+    width: 23%;
+    text-align: center;
+    border-bottom: 1px solid #555;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #444;
+}
+
+tbody tr:hover {
+    background-color: #555;
+}
+
+tbody td:first-child{
+    width: 6%;
+}
+thead th:first-child{
+    width: 6%;
+}
+
+th {
+    font-weight: bold;
+}
+
+
+.out_put_text {
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+
+.clearButton{
+    width: 10em;
+}
+
+.controller {
+    height: 5%;
+    width: 100%;
+    display: grid;
+    margin-top: 1em;
+    justify-content: end;
+}
+
+

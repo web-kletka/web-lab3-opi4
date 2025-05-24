@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html>
+<html
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://xmlns.jcp.org/jsf/html
+                            http://xmlns.jcp.org/jsf/facelets"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+<h:head>
+    <title>#{msg['lab.name']}</title>
+<!--    <link rel="stylesheet" href="style/index.css"/>-->
+    <link rel="stylesheet" href="style/main.css"/>
+</h:head>
+    <h:body>
+        <div class="header" style="font-family: fantasy">
+            <h1>#{msg['author.name']}</h1>
+            <h2>#{msg['author.group']} / #{msg['author.variant']}</h2>
+        </div>
+
+        <div class="content">
+            <div class="box">
+                <canvas id="clock" width="400px" height="400px"/>
+            </div>
+            <h3 id = "date"/>
+        </div>
+        <div class="footer">
+            <h:form>
+                <h:commandButton class="button footer-box" value="#{msg['button.go.to.index']}" action="index"/>
+            </h:form>
+        </div>
+        <script src = "js/clock.js"/>
+    </h:body>
+</html>

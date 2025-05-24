@@ -1,0 +1,8 @@
+lib
+.idea
+build
+*.imi
+team_build
+test_reports/html
+# Ignore Gradle project-specific cache directory
+.gradle

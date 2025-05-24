@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html>
+<html
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://xmlns.jcp.org/jsf/html"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://xmlns.jcp.org/jsf/html"
+        xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <h:head>
+        <title>#{msg['lab.name']}</title>
+        <link rel="stylesheet" href="style/index.css"/>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"/>
+        <script src="https://cdn.jsdelivr.net/npm/three@latest/build/three.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/three/examples/js/controls/OrbitControls.js"></script>
+    </h:head>
+    <h:body>
+
+
+        <div class="header" style="font-family: fantasy">
+            <div class="left-section">
+                <h:form>
+                    <h:commandButton class="exit-button" value="&lt;" action="main"/>
+                </h:form>
+                <h1>#{msg['author.name']}</h1>
+            </div>
+            <div>
+                <h2>#{msg['author.group']} / #{msg['author.variant']}</h2>
+            </div>
+        </div>
+
+        <div class="form-container">
+            <h:form class="myform" id="myform" onsubmit="return validateForm()">
+                <input type="hidden" name="action" value="areaCheck"/>
+                <div class="input-group">
+                    <label>#{msg['label.dif.x']}:</label>
+                    <h:inputText value="#{FormBean.x}" styleClass="textField" id="x" name="x" placeholder="-3 ... 3"/>
+                </div>
+
+                <div class="input-group">
+                    <label>#{msg['label.dif.y']}:</label>
+                    <h:inputText value="#{FormBean.y}" styleClass="textField" id="y" name="y" placeholder="-4 ... 4"/>
+                </div>
+
+                <div class="input-group">
+                    <label>#{msg['label.dif.z']}:</label>
+                    <h:inputText value="#{FormBean.z}" styleClass="textField" id="z" name="z" placeholder="-4 ... 4"/>
+                </div>
+
+                <div class="input-group">
+                    <label>#{msg['label.dif.r']}:</label>
+                    <div class="checkbox-group">
+                        <label><h:selectBooleanCheckbox type="checkbox" name="r" value="#{FormBean.checkbox1}" class="checkR"/></label>
+                        <label><h:selectBooleanCheckbox type="checkbox" name="r" value="#{FormBean.checkbox2}" class="checkR"/></label>
+                        <label><h:selectBooleanCheckbox id="checkbox3" type="checkbox" name="r" value="#{FormBean.checkbox3}" class="checkR"/></label>
+                        <label><h:selectBooleanCheckbox type="checkbox" name="r" value="#{FormBean.checkbox4}" class="checkR"/></label>
+                    </div>
+                    <label id="resultCheckBox">#{msg['label.zero']}</label>
+
+
+                    <h:inputHidden id="r" value="#{FormBean.r}" />
+                </div>
+                <div class="input-group">
+                    <label>#{msg['label.dynamic.check']}: </label>
+                    <div class="checkbox-group">
+                        <label><h:selectBooleanCheckbox type="checkbox" name="dynamic_check_box" value="#{FormBean.checkbox5}" class="check_dynamic"/></label>
+                    </div>
+                </div>
+                <h:commandButton value="#{msg['button.send']}" styleClass="button"
+                                 action="#{FormBean.processRequest}" id="responseButton"/>
+                <div id="out_put_text" class="out_put_text" >
+                    <h:outputText id = "result_field" value="#{CheckerBean.result}"/>
+                </div>
+            </h:form>
+
+
+            <div class="graph-canvas">
+                <script>
+                    let points = [];
+                </script>
+                <ui:repeat value="#{TableBean.requestHistory}" var="entry">
+                    <script>
+                        points.push({x: #{entry.x}, y: #{entry.y}, z: #{entry.z},  color: '#{entry.result ? "green" : "red"}'});
+                    </script>
+                </ui:repeat>
+                <script>
+                    console.log("points", points);
+                </script>
+                <canvas id="graphCanvas" width="300" height="300"/>
+            </div>
+
+
+        </div>
+
+        <div class="large-rectangle">
+            <table>
+                <thead>
+                <tr>
+                    <th>#{msg['table.head.xyr']}</th>
+                    <th>#{msg['table.head.result']}</th>
+                    <th>#{msg['table.head.time']}</th>
+                    <th>#{msg['table.head.time.script']}</th>
+                </tr>
+                </thead>
+                <tbody id="myTBody">
+                <ui:repeat value="#{TableBean.requestHistory}" var="entry">
+                    <tr>
+                        <td class="th"><h:outputText value="#{entry.xyzr}"/></td>
+                        <td class="th"><h:outputText value="#{entry.result}"/></td>
+                        <td class="th"><h:outputText value="#{entry.date}"/></td>
+                        <td class="th"><h:outputText value="#{entry.time}"/></td>
+                    </tr>
+                </ui:repeat>
+                </tbody>
+            </table>
+        </div>
+        <div class="controller">
+            <h:form>
+                <h:commandButton value="#{msg['button.clear']}" styleClass="clearButton button"
+                             action="#{TableBean.clearTable}" id="clearButton"/>
+            </h:form>
+        </div>
+
+        <script src="js/validate.js"/>
+        <script src="js/graph.js"/>
+        <script src="js/mouse.js"/>
+    </h:body>
+</html>
