@@ -1,4 +1,4 @@
-package roma.services;
+package services;
 
 import java.util.Locale;
 import java.util.ResourceBundle;
@@ -34,7 +34,7 @@ public class LocalService {
 
     private void getResourceBundle() {
         Locale locale = getResourceLocale();
-        resourceBundle = ResourceBundle.getBundle("native2ascii.messages", locale);
+        resourceBundle = ResourceBundle.getBundle("locale.messages", locale);
     }
 
     public ResourceBundle getMessage() {

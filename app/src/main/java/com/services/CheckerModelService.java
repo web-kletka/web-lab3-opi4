@@ -1,4 +1,4 @@
-package roma.services;
+package services;
 
 import jakarta.enterprise.context.ApplicationScoped;
 

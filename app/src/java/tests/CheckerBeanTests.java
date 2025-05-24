@@ -1,9 +1,9 @@
 package tests;
 
-import com.roma.beans.CheckerBean;
-import com.roma.data.common.customException.ValidException;
-import com.roma.data.models.MyEntityModel;
-import com.roma.services.CheckerModelService;
+import roma.beans.CheckerBean;
+import roma.data.common.customException.ValidException;
+import roma.data.models.MyEntityModel;
+import roma.services.CheckerModelService;
 import com.roma.services.EntityModelService;
 import com.roma.services.LocalService;
 import com.roma.services.ParsParamsService;

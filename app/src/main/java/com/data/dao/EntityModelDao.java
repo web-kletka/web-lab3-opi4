@@ -1,6 +1,6 @@
-package roma.data.dao;
+package data.dao;
 
-import roma.data.models.MyEntityModel;
+import data.models.MyEntityModel;
 
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.persistence.EntityManager;

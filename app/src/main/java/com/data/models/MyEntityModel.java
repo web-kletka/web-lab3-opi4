@@ -1,6 +1,6 @@
-package roma.data.models;
+package data.models;
 
-import roma.services.LocalService;
+import services.LocalService;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -41,7 +41,6 @@ public class MyEntityModel {
 
     @Transient
     private String info;
-
 
     public MyEntityModel(String info) {
         this.info = info;

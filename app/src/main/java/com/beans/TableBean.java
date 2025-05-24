@@ -1,7 +1,7 @@
-package roma.beans;
+package beans;
 
-import roma.data.models.MyEntityModel;
-import roma.services.EntityModelService;
+import data.models.MyEntityModel;
+import services.EntityModelService;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.faces.context.FacesContext;
 import jakarta.inject.Inject;

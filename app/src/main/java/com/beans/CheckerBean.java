@@ -1,11 +1,11 @@
-package roma.beans;
+package beans;
 
-import roma.services.CheckerModelService;
-import roma.services.EntityModelService;
-import roma.services.LocalService;
-import roma.services.ParsParamsService;
-import roma.data.common.customException.ValidException;
-import roma.data.models.MyEntityModel;
+import data.models.MyEntityModel;
+import services.CheckerModelService;
+import services.EntityModelService;
+import services.LocalService;
+import services.ParsParamsService;
+import data.common.customException.ValidException;
 import jakarta.annotation.PostConstruct;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Inject;

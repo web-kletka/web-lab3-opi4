@@ -1,8 +1,8 @@
-package roma.services;
+package services;
 
 import jakarta.enterprise.context.ApplicationScoped;
 import lombok.Getter;
-import roma.data.common.customException.ValidException;
+import data.common.customException.ValidException;
 
 import java.util.HashMap;
 

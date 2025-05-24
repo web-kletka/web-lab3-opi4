@@ -1,7 +1,7 @@
-package roma.services;
+package services;
 
-import roma.data.dao.EntityModelDao;
-import roma.data.models.MyEntityModel;
+import data.dao.EntityModelDao;
+import data.models.MyEntityModel;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import lombok.NoArgsConstructor;

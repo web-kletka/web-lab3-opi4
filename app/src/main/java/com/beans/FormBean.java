@@ -1,4 +1,4 @@
-package roma.beans;
+package beans;
 
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.faces.context.FacesContext;

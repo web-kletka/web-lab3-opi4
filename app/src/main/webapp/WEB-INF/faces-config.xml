@@ -23,25 +23,25 @@
 
     <managed-bean>
         <managed-bean-name>FormBean</managed-bean-name>
-        <managed-bean-class>com.roma.beans.FormBean</managed-bean-class>
+        <managed-bean-class>com.beans.FormBean</managed-bean-class>
         <managed-bean-scope>session</managed-bean-scope>
     </managed-bean>
 
     <managed-bean>
         <managed-bean-name>CheckerBean</managed-bean-name>
-        <managed-bean-class>com.roma.beans.CheckerBean</managed-bean-class>
+        <managed-bean-class>com.beans.CheckerBean</managed-bean-class>
         <managed-bean-scope>session</managed-bean-scope>
     </managed-bean>
 
     <managed-bean>
         <managed-bean-name>TableBean</managed-bean-name>
-        <managed-bean-class>com.roma.beans.TableBean</managed-bean-class>
+        <managed-bean-class>com.beans.TableBean</managed-bean-class>
         <managed-bean-scope>session</managed-bean-scope>
     </managed-bean>
 
     <application>
         <resource-bundle>
-            <base-name>native2ascii.messages</base-name>
+            <base-name>locale.messages</base-name>
             <var>msg</var>
         </resource-bundle>
         <locale-config>
