@@ -74,22 +74,27 @@
                 </div>
             </h:form>
 
-
-            <div class="graph-canvas">
-                <script>
-                    let points = [];
-                </script>
-                <ui:repeat value="#{TableBean.requestHistory}" var="entry">
+            <div>
+                <div class="graph-canvas">
                     <script>
-                        points.push({x: #{entry.x}, y: #{entry.y}, z: #{entry.z},  color: '#{entry.result ? "green" : "red"}'});
+                        let points = [];
                     </script>
-                </ui:repeat>
-                <script>
-                    console.log("points", points);
-                </script>
-                <canvas id="graphCanvas" width="300" height="300"/>
+                    <ui:repeat value="#{TableBean.requestHistory}" var="entry">
+                        <script>
+                            points.push({x: #{entry.x}, y: #{entry.y}, z: #{entry.z},  color: '#{entry.result ? "green" : "red"}'});
+                        </script>
+                    </ui:repeat>
+                    <script>
+                        console.log("points", points);
+                    </script>
+                    <canvas id="graphCanvas" width="300" height="300"/>
+                </div>
+                <div>
+                    <h:form  style="width: 100%">
+                        <h:commandButton class="button" value="#{msg['text.stats']}" action="graph"/>
+                    </h:form>
+                </div>
             </div>
-
 
         </div>
 
@@ -124,6 +129,5 @@
 
         <script src="js/validate.js"/>
         <script src="js/graph.js"/>
-        <script src="js/mouse.js"/>
     </h:body>
 </html>

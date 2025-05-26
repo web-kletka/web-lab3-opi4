@@ -1,4 +1,3 @@
-import org.gradle.api.tasks.bundling.Zip
 import org.gradle.api.tasks.Copy
 import org.gradle.api.tasks.Exec
 
@@ -152,16 +151,26 @@ tasks.register("lang") {
         val sourceDir = properties["message.resources"].toString()
         val sourceFile = file("$sourceDir/messages_$selectedLang.properties")
 
-        file(targetDir).mkdirs()
-
         project.copy {
             from(sourceFile)
-            into(targetDir)
+            into("$targetDir/tmp")
         }
+
+        file(targetDir).mkdirs()
+
+        ant.withGroovyBuilder {
+            "native2ascii"(
+                "encoding" to "UTF-8",
+                "src" to "$targetDir/tmp",
+                "dest" to targetDir  // Указываем директорию для результата
+            )
+        }
+        delete("$targetDir/tmp")
 
         println("Выбрана локализация: $selectedLang")
     }
 }
+
 
 tasks.register<Exec>("start_wf") {
     commandLine("sh", "${properties["wf.start.script"]}")
@@ -171,7 +180,7 @@ tasks.register<Exec>("stop_wf") {
     commandLine("sh", "${properties["wf.stop.script"]}", "--connect", "command=:shutdown")
 }
 
-val checkAndStartWf = tasks.register("check_and_start_wf") {
+tasks.register("check_and_start_wf") {
     group = "wildfly"
     description = "Checks if WildFly is running, and starts it if not"
 
@@ -186,13 +195,11 @@ val checkAndStartWf = tasks.register("check_and_start_wf") {
         }
 
         if (isRunning) {
-            println("WildFly is already running.")
+            println("WildFly уже запущен.")
         } else {
-            println("WildFly is not running. Starting...")
             exec {
                 commandLine("sh", "${properties["wf.start.script"]}")
             }
-            println("Waiting for WildFly to start...")
         }
     }
 }
@@ -201,7 +208,7 @@ tasks.register("env") {
     group = "deployment"
     description = "Builds, prepares WAR, ensures WildFly is up, and deploys"
 
-    dependsOn(tasks["lang"], tasks.war,  checkAndStartWf)
+    dependsOn(tasks["lang"], tasks.war, tasks["check_and_start_wf"])
 
     doLast {
         println("Copying WAR...")

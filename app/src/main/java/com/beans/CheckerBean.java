@@ -1,6 +1,7 @@
 package beans;
 
 import data.models.MyEntityModel;
+import jakarta.ejb.Startup;
 import services.CheckerModelService;
 import services.EntityModelService;
 import services.LocalService;
@@ -13,11 +14,14 @@ import jakarta.inject.Named;
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.management.*;
 import java.io.Serializable;
+import java.lang.management.ManagementFactory;
 import java.util.Date;
 
 @Named("CheckerBean")
 @SessionScoped
+@Startup
 public class CheckerBean implements Serializable {
 
     @Getter
@@ -25,11 +29,15 @@ public class CheckerBean implements Serializable {
     private String result;
 
     @Inject
+    private StatsBean statsBean;
+
+    @Inject
     private EntityModelService entityModelService;
     @Inject
     private CheckerModelService checkerModelService;
     @Inject
     private ParsParamsService parsParamsService ;
+
 
     @PostConstruct
     public void init() {
@@ -43,6 +51,7 @@ public class CheckerBean implements Serializable {
             parsParamsService.validParams();
             boolean resultOfCalc = checkerModelService.calculate(parsParamsService.getX(), parsParamsService.getY(), parsParamsService.getZ(), parsParamsService.getR());
             MyEntityModel myEntityModel = new MyEntityModel(0, parsParamsService.getX(), parsParamsService.getY(), parsParamsService.getZ(), parsParamsService.getR(), resultOfCalc, System.currentTimeMillis() - startTime, new Date(), "ok");
+            statsBean.updateStats(myEntityModel.isResult());
             result = myEntityModel.toString();
             entityModelService.saveModel(myEntityModel);
         } catch (ValidException e) {

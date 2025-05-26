@@ -1,5 +1,7 @@
 package beans;
 
+import jakarta.annotation.PostConstruct;
+import jakarta.ejb.Startup;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.faces.context.FacesContext;
 import jakarta.inject.Inject;
@@ -7,13 +9,16 @@ import jakarta.inject.Named;
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.management.*;
 import java.io.IOException;
 import java.io.Serializable;
+import java.lang.management.ManagementFactory;
 
 @Named("FormBean")
 @SessionScoped
 @Getter
 @Setter
+@Startup
 public class FormBean implements Serializable {
     private String x;
     private String y;
@@ -28,6 +33,7 @@ public class FormBean implements Serializable {
 
     @Inject
     private CheckerBean checkerBean;
+
 
     public void processRequest() {
         checkerBean.check(x,y,z,r);

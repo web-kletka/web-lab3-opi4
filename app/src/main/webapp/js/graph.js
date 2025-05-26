@@ -74,6 +74,8 @@ window.addEventListener('load', () => {
     });
 });
 
+
+
 function drawGraphic(r){
 
     scene.clear()
@@ -149,6 +151,7 @@ function createAxis(color, start, end) {
     const axis = new THREE.Line(geometry, material);
     return axis;
 }
+
 // Функция для добавления точки
 function drawPoint(x, y, z, color) {
     const geometry = new THREE.SphereGeometry(0.05, 32, 32);
