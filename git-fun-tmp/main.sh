@@ -1,7 +1,5 @@
-
-
-# shellcheck disable=SC1090
-source utils.sh
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+source "$SCRIPT_DIR/utils.sh"
 
 clear_func
 
@@ -223,3 +221,6 @@ merge_func "br17" "br11" "red" "r69"
 
 # br17 -> br0 r70
 merge_func "br0" "br17" "red" "r70"
+
+
+exit 0

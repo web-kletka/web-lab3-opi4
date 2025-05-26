@@ -26,7 +26,7 @@ merge_func(){
 
   git checkout "${br_to}"
 
-  git merge  --allow-unrelated-histories --no-ff "${br_from}" -m "merged ${br_from} to ${br_to}"
+  git merge  --allow-unrelated-histories --no-ff "${br_from}" -m "${name}"
 
 }
 

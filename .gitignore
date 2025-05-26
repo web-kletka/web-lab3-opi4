@@ -6,4 +6,4 @@ team_build
 test_reports/html
 # Ignore Gradle project-specific cache directory
 .gradle
-git-fun/src
+git-fun-tmp/src
